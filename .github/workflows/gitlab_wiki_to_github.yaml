@@ -25,12 +25,14 @@ jobs:
 
       # rodando um único comando com um título
       - name: Clonando a wiki do AGES tools
-        run: git clone https://tools.ages.pucrs.br/Joinfut/joinfut-wiki.wiki.git
+        run: |
+          git clone https://$GITLAB_USER_NAME:$GITLAB_TOKEN@tools.ages.pucrs.br/Joinfut/joinfut-wiki.wiki.git
+          cd joinfut-wiki.wiki
 
       # Runs a set of commands using the runners shell
       - name: Configurando o usuario e email
         run: |
-          git clone git config --global user.name "${USER_NAME}"
+          git clone git config --global user.name "${GITLAB_USER_NAME}"
           git config --global user.email "EMAIL"
           
       - name: Verificando os Commits

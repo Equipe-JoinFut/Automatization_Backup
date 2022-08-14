@@ -1,0 +1,34 @@
+# This is a basic workflow to help you get started with Actions
+
+name: CI
+
+# Controls when the workflow will run
+on:
+  schedule:
+    # Action vai rodar a meia noite (min hora diaMes mes diaSemana)
+    - cron: '0 0 * * *'
+
+  # workflow_dispatch serve para poder rodar o action manualmente também
+  workflow_dispatch:
+
+# um workflow roda em um ou mais jobs que podem rodar sequencialmente ou paralelamente
+jobs:
+  # build é para dizer onde que os comandos vão ser rodados
+  build:
+    # nesse exemplo o build é rodado no ubuntu
+    runs-on: ubuntu-latest
+
+    # Steps são as tarefas que vão ser feitas nesse job
+    steps:
+      # uses nesse exemplo utiliza o checkout para lidar com checkouts
+      - uses: actions/checkout@v3
+
+      # rodando um único comando com um título
+      - name: Clonando a wiki do AGES tools
+        run: echo Hello, world!
+
+      # Runs a set of commands using the runners shell
+      - name: 
+        run: |
+          echo Add other actions to build,
+          echo test, and deploy your project.

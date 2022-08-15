@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: AUTO-MESSAGE
+name: DAY-VERIFIER
 
 # Controls when the workflow will run
 on:
@@ -24,6 +24,8 @@ jobs:
       - uses: actions/checkout@v3
       
       # Mandando mensagem a meia noite
-      - name: Mensagem Boas vindas
-        run: echo 'Essa mensagem aconteceu a meia noite'
+      - name: Pegando a data atual
+        run: |
+          echo 'Data atual e hora atual do workflow'
+          date '+%d/%m/%Y %H:%M:%S'
       

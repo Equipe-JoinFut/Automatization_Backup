@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: AUTO-MESSAGE
 
 # Controls when the workflow will run
 on:
@@ -23,21 +23,7 @@ jobs:
       # uses nesse exemplo utiliza o checkout para lidar com checkouts
       - uses: actions/checkout@v3
       
-      # Atualizando o sistema do linux
-      - name: Atualizando o ubuntu
-        run: apt install update
-
-      # rodando um único comando com um título
-      - name: Clonando a wiki do AGES tools
-        run: |
-          git clone https://$GITLAB_USER_NAME:$GITLAB_TOKEN@tools.ages.pucrs.br/Joinfut/joinfut-wiki.wiki.git
-          cd joinfut-wiki.wiki
-
-      # Runs a set of commands using the runners shell
-      - name: Configurando o usuario e email
-        run: |
-          git clone git config --global user.name "${GITLAB_USER_NAME}"
-          git config --global user.email "EMAIL"
-          
-      - name: Verificando os Commits
-        run: git log
+      # Mandando mensagem a meia noite
+      - name: Mensagem Boas vindas
+        run: echo 'Essa mensagem aconteceu a meia noite'
+      

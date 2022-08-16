@@ -48,7 +48,7 @@ jobs:
         
       # Avisando que as infos foram salvas
       - name: Adicionando que foi confirmado
-        run: echo '✔️ Workflow rodado com sucesso dia $(date +"%d/%m/%Y")!' >> datas_backup.txt
+        run: echo "✔️ Workflow rodado com sucesso dia $(date +"%d/%m/%Y")!" >> datas_backup.txt
           
       # Criando um commit
       - name: Criando um commit

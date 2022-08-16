@@ -20,12 +20,25 @@ jobs:
 
     # Steps são as tarefas que vão ser feitas nesse job
     steps:
-      # uses nesse exemplo utiliza o checkout para lidar com checkouts
-      - uses: actions/checkout@v3
       
-      # Mandando mensagem a meia noite
+      # Mandando mensagem a meia noite no arquivo datas_backup.txt
       - name: Pegando a data atual
         run: |
-          echo 'Data atual e hora atual do workflow'
-          date '+%d/%m/%Y %H:%M:%S'
+          echo 'Data atual e hora atual do workflow' > datas_backup.txt
+          date '+%d/%m/%Y %H:%M:%S' > datas_backup.txt
+      
+      # Criando o commit
+       # uses nesse exemplo cria um commit com as mudanças
+      - uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Atualizado arquivo datas_backup.txt
+          
+      - name: "Run if changes have been detected"
+        if: steps.auto-commit-action.outputs.changes_detected == 'true'
+        run: echo "Changes!"
+
+      - name: "Run if no changes have been detected"
+        if: steps.auto-commit-action.outputs.changes_detected == 'false'
+        run: echo "No Changes!"
+          
       

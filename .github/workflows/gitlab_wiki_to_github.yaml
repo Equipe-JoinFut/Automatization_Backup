@@ -31,7 +31,7 @@ jobs:
       
       # Baixando o NPM
       - name: Baixando o npm por comando
-        run: auso apt-get install npm
+        run: sudo apt-get install npm
         
       # Baixando o coinmon
       - name: Baixando o coinmon

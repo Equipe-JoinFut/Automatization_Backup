@@ -42,7 +42,7 @@ jobs:
         run: |
             echo '-------------------------------------------------------------------------' >> datas_backup.txt
             echo ' ' >> datas_backup.txt
-            date '%d/%m/%Y'
+            date +'%d/%m/%Y'
             coinmon >> datas_backup.txt
             echo ' ' >> datas_backup.txt
       
@@ -58,7 +58,7 @@ jobs:
           git config user.email "gabriel.stundner@acad.pucrs.br"
           git config user.name "F4NT0"
           git add ./datas_backup.txt
-          git commit -m "Teste de workflow"
+          git commit -m "✔️ Pego os valores de bitcoin"
       
       # Fazendo push pelo actions
       - uses: ad-m/github-push-action@master

@@ -30,9 +30,6 @@ jobs:
         run: |
           echo 'Data atual e hora atual do workflow' > datas_backup.txt
           date '+%d/%m/%Y %H:%M:%S' > datas_backup.txt
-          git status
-          git add .
-          git commit -m "Pegando a data de hoje no arquivo datas_backup"
           
       # Criando um commit
       - name: Criando um commit
@@ -40,7 +37,7 @@ jobs:
           git status
           git config user.email "gabriel.stundner@acad.pucrs.br"
           git config user.name "F4NT0"
-          git add .
+          git add ./datas_backup.txt
           git commit -m "Teste de workflow"
       
       # Fazendo push pelo actions

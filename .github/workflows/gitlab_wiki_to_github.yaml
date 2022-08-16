@@ -25,17 +25,30 @@ jobs:
         with:
           ref: ${{ github.head_ref }}
       
-      # Mandando mensagem a meia noite no arquivo datas_backup.txt
-      - name: Pegando a data atual
-        run: date '+%d/%m/%Y %H:%M:%S' >> datas_backup.txt
+      # Baixando o node.js
+      - name: Baixando o node.js por comando
+        run: apt-get install nodejs
       
-      # Pegando informações do sistema linux rodado
-      - name: Pegando dados do sistema
-        run: uname -a >> datas_backup.txt
+      # Baixando o NPM
+      - name: Baixando o npm por comando
+        run: apt-get install npm
+        
+      # Baixando o coinmon
+      - name: Baixando o coinmon
+        run: npm install -g coinmon
+        
+      # Enviando os dados do coinmon para o arquivo
+      - name: Enviando dados do coinmon para o arquivo
+        run: |
+            echo '-------------------------------------------------------------------------' >> datas_backup.txt
+            echo ' ' >> datas_backup.txt
+            coinmon >> datas_backup.txt
+            echo ' ' >> datas_backup.txt
+      
         
       # Avisando que as infos foram salvas
       - name: Adicionando que foi confirmado
-        run: echo '✔️ Workflow rodado com sucesso a meia noite!'
+        run: echo '✔️ Workflow rodado com sucesso a meia noite!' >> datas_backup.txt
           
       # Criando um commit
       - name: Criando um commit

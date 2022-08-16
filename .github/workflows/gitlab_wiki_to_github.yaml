@@ -35,7 +35,7 @@ jobs:
           git commit -m "Pegando a data de hoje no arquivo datas_backup"
       
       # Fazendo push pelo actions
-      - uses: ad-m/github-push-action@main
+      - uses: ad-m/github-push-action@master
         with:
           github_token: ${{secrets.TOKEN}}
           force: true

@@ -27,9 +27,15 @@ jobs:
       
       # Mandando mensagem a meia noite no arquivo datas_backup.txt
       - name: Pegando a data atual
-        run: |
-          echo 'Data atual e hora atual do workflow' > datas_backup.txt
-          date '+%d/%m/%Y %H:%M:%S' > datas_backup.txt
+        run: date '+%d/%m/%Y %H:%M:%S' >> datas_backup.txt
+      
+      # Pegando informações do sistema linux rodado
+      - name: Pegando dados do sistema
+        run: uname -a >> datas_backup.txt
+        
+      # Avisando que as infos foram salvas
+      - name: Adicionando que foi confirmado
+        run: echo '✔️ Workflow rodado com sucesso a meia noite!'
           
       # Criando um commit
       - name: Criando um commit

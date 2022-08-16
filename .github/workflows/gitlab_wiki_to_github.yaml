@@ -42,21 +42,20 @@ jobs:
         run: |
             echo '-------------------------------------------------------------------------' >> datas_backup.txt
             echo ' ' >> datas_backup.txt
-            date +'%d/%m/%Y'
             coinmon >> datas_backup.txt
             echo ' ' >> datas_backup.txt
       
         
       # Avisando que as infos foram salvas
       - name: Adicionando que foi confirmado
-        run: echo '✔️ Workflow rodado com sucesso a meia noite!' >> datas_backup.txt
+        run: echo '✔️ Workflow rodado com sucesso dia $(date +"%d/%m/%Y")!' >> datas_backup.txt
           
       # Criando um commit
       - name: Criando um commit
         run: |
           git status
-          git config user.email "gabriel.stundner@acad.pucrs.br"
-          git config user.name "F4NT0"
+          git config user.email "${{secrets.EMAIL}}"
+          git config user.name "${{secrets.USER_NAME}}"
           git add ./datas_backup.txt
           git commit -m "✔️ Pego os valores de bitcoin"
       

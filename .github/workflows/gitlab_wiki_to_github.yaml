@@ -20,6 +20,10 @@ jobs:
 
     # Steps são as tarefas que vão ser feitas nesse job
     steps:
+    
+      - uses: actions/checkout@v2
+        with:
+          ref: ${{ github.head_ref }}
       
       # Mandando mensagem a meia noite no arquivo datas_backup.txt
       - name: Pegando a data atual
@@ -32,6 +36,12 @@ jobs:
       - uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Atualizado arquivo datas_backup.txt
+          branch: main
+          repository: .
+          commit_user_name: F4NT0
+          commit_user_email: gabriel.stundner@acad.pucrs.br
+          commit_author: F4NT0
+          push_options: '--force'
           
       - name: "Run if changes have been detected"
         if: steps.auto-commit-action.outputs.changes_detected == 'true'

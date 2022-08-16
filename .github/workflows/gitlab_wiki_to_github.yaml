@@ -24,6 +24,10 @@ jobs:
       - uses: actions/checkout@v2
         with:
           ref: ${{ github.head_ref }}
+          
+      # Atualizando o linux
+      - name: Atualizando o linux
+        run: apt-get update
       
       # Baixando o node.js
       - name: Baixando o node.js por comando

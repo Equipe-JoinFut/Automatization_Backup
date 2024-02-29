@@ -54,8 +54,7 @@ jobs:
         run: |
             echo '-------------------------------------------------------------------------' >> datas_backup.txt
             echo ' ' >> datas_backup.txt
-            cli-weather-terminal
-            cli-weather-terminal >> datas_backup.txt
+            cli-weather-terminal London >> datas_backup.txt
             echo ' ' >> datas_backup.txt
       
         

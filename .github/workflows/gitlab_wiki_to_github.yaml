@@ -26,12 +26,24 @@ jobs:
           ref: ${{ github.head_ref }}
       
       # Baixando o node.js
-      - name: Baixando o node.js por comando
-        run: sudo apt-get install nodejs
+      #- name: Baixando o node.js por comando
+      #  run: sudo apt-get install nodejs
+
+      # Configurando o Nodejs 20
+      - name: Configurando Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20' # Versão do Node atualmente
+
+      - name: Verificando versão do Node
+        run: node -v
+
+      - name: Verificando versão do NPM
+        run: npm -v
       
       # Baixando o NPM
-      - name: Baixando o npm por comando
-        run: sudo apt-get install npm
+      #- name: Baixando o npm por comando
+      #  run: sudo apt-get install npm
         
       # Baixando o coinmon
       - name: Baixando o coinmon

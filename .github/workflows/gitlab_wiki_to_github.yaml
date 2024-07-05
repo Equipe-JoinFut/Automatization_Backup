@@ -1,58 +1,58 @@
 # This is a basic workflow to help you get started with Actions
 
-name: BITCOIN-VERIFIER
+#name: BITCOIN-VERIFIER
 
 # Controls when the workflow will run
-on:
-  schedule:
+#on:
+#  schedule:
     # Action vai rodar a meia noite (min hora diaMes mes diaSemana)
-    - cron: '0 12 * * *'
+#    - cron: '0 12 * * *'
 
   # workflow_dispatch serve para poder rodar o action manualmente também
-  workflow_dispatch:
+#  workflow_dispatch:
 
 # um workflow roda em um ou mais jobs que podem rodar sequencialmente ou paralelamente
-jobs:
+#jobs:
   # build é para dizer onde que os comandos vão ser rodados
-  build:
+#  build:
     # nesse exemplo o build é rodado no ubuntu
-    runs-on: ubuntu-latest
+#    runs-on: ubuntu-latest
 
     # Steps são as tarefas que vão ser feitas nesse job
-    steps:
+#    steps:
     
-      - uses: actions/checkout@v2
-        with:
-          ref: ${{ github.head_ref }}
-        
-      # Enviando os dados do coinmon para o arquivo
-      - name: Enviando dados para o arquivo
-        run: |
-            echo '-------------------------------------------------------------------------' >> datas_backup.txt
-            echo ' ' >> datas_backup.txt
-            echo 'Teste de envio $(date)' >> datas_backup.txt
-            echo ' ' >> datas_backup.txt
-      
-        
-      # Avisando que as infos foram salvas
-      - name: Adicionando que foi confirmado
-        run: echo "✔️ Workflow rodado com sucesso dia $(date +"%d/%m/%Y")!" >> datas_backup.txt
-          
-      # Criando um commit
-      - name: Criando um commit
-        run: |
-          git status
-          git config user.email "${{secrets.EMAIL}}"
-          git config user.name "${{secrets.USER_NAME}}"
-          git add ./datas_backup.txt
-          git commit -m "✔️ Pego os valores passados!"
-      
-      # Fazendo push pelo actions
-      - uses: ad-m/github-push-action@master
-        with:
-            github_token: ${{secrets.TOKEN}}
-            force: true
-          
-      
-          
-      
+#      - uses: actions/checkout@v2
+#        with:
+#          ref: ${{ github.head_ref }}
+#        
+#      # Enviando os dados do coinmon para o arquivo
+#      - name: Enviando dados para o arquivo
+#        run: |
+#            echo '-------------------------------------------------------------------------' >> datas_backup.txt
+#            echo ' ' >> datas_backup.txt
+#            echo 'Teste de envio $(date)' >> datas_backup.txt
+#            echo ' ' >> datas_backup.txt
+#      
+#        
+#      # Avisando que as infos foram salvas
+#      - name: Adicionando que foi confirmado
+#        run: echo "✔️ Workflow rodado com sucesso dia $(date +"%d/%m/%Y")!" >> datas_backup.txt
+#          
+#      # Criando um commit
+#      - name: Criando um commit
+#        run: |
+#          git status
+#          git config user.email "${{secrets.EMAIL}}"
+#          git config user.name "${{secrets.USER_NAME}}"
+#          git add ./datas_backup.txt
+#          git commit -m "✔️ Pego os valores passados!"
+#      
+#      # Fazendo push pelo actions
+#      - uses: ad-m/github-push-action@master
+#        with:
+#            github_token: ${{secrets.TOKEN}}
+#            force: true
+#          
+#      
+#          
+#      
